@@ -94,7 +94,8 @@ if st.button("Calculer"):
 
         # Download Excel (inputs + outputs)
         xls_name = "resultats_cepa_mvp.xlsx"
-        with pd.ExcelWriter(xls_name) as writer:
+        with pd.ExcelWriter(xls_name, engine="openpyxl") as writer:
+        # with pd.ExcelWriter(xls_name) as writer:
             # inputs
             pd.DataFrame([pipe.__dict__]).to_excel(writer, index=False, sheet_name="Pipe")
             pd.DataFrame([soil.__dict__]).to_excel(writer, index=False, sheet_name="Soil")
